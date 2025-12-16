@@ -8,25 +8,26 @@
 
 ## 📁 ساختار پروژه
 
+```
 university_app/
 ├── main.py
 ├── settings.py
 ├── core/
-│ ├── init.py
-│ ├── config.py
-│ └── database.py
+│   ├── __init__.py
+│   ├── config.py
+│   └── database.py
 ├── ui_form/
-│ ├── init.py
-│ ├── login.py
-│ ├── admin.py
-│ ├── professor.py
-│ └── student.py
+│   ├── __init__.py
+│   ├── login.py
+│   ├── admin.py
+│   ├── professor.py
+│   └── student.py
 ├── resources/
-│ ├── icons/
-│ ├── images/
-│ └── styles/
+│   ├── icons/
+│   ├── images/
+│   └── styles/
 └── requirements.txt
-
+```
 
 ---
 
@@ -39,44 +40,61 @@ university_app/
 
 ```bash
 pip install -r requirements.txt
-🚀 اجرای برنامه
+```
 
-از ریشه پروژه اجرا کنید:
+---
+
+## 🚀 اجرای برنامه
+
+از **ریشه پروژه** اجرا کنید:
+
+```bash
 python -m university_app.main
-❌ اجرای مستقیم python main.py از داخل پوشه university_app باعث خطای import می‌شود.
+```
 
-🛠️ تنظیمات
+> ❌ اجرای مستقیم `python main.py` از داخل پوشه `university_app` باعث خطای import می‌شود.
 
-تمام تنظیمات در settings.py قرار دارند:
+---
 
-DB_ENGINE → تغییر بین sqlite و mysql
+## 🛠️ تنظیمات
 
-DEBUG → حالت توسعه
+تمام تنظیمات در `settings.py` قرار دارند:
 
-مسیر دیتابیس و تنظیمات MySQL
+- `DB_ENGINE` → تغییر بین `sqlite` و `mysql`  
+- `DEBUG` → حالت توسعه  
+- مسیر دیتابیس و تنظیمات MySQL
 
-برای دسترسی امن، از core/config.py استفاده کنید:
+برای دسترسی امن، از `core/config.py` استفاده کنید:
 
+```python
 from university_app.core.config import get_app_name, get_db_engine
+```
 
-هیچ فرم یا ماژول UI نباید مستقیم settings.py یا دیتابیس را ایمپورت کند.
+> هیچ فرم یا ماژول UI نباید مستقیم `settings.py` یا دیتابیس را ایمپورت کند.
 
-👨‍💻 قوانین تیمی
+---
 
-تمام فرم‌ها در ui_form/ قرار می‌گیرند.
+## 👨‍💻 قوانین تیمی
 
-هر عضو فقط روی فرم خودش کار می‌کند.
+1. تمام فرم‌ها در `ui_form/` قرار می‌گیرند.  
+2. هر عضو فقط روی فرم خودش کار می‌کند.  
+3. دسترسی مستقیم به دیتابیس از UI ممنوع است.  
+4. تغییر زیرساخت فقط در `core/` انجام شود.  
+5. تنظیمات ثابت پروژه فقط در `settings.py` قرار دارند.
 
-دسترسی مستقیم به دیتابیس از UI ممنوع است.
+---
 
-تغییر زیرساخت فقط در core/ انجام شود.
+## 📌 نکات توسعه
 
-تنظیمات ثابت پروژه فقط در settings.py قرار دارند.
+- برای اضافه کردن فرم جدید، یک فایل جدید در `ui_form/` بسازید و import آن را در `main.py` یا `ui_form/__init__.py` انجام دهید.  
+- برای مهاجرت دیتابیس به MySQL، کافیست `DB_ENGINE` را تغییر دهید و مطمئن شوید MySQL server در دسترس است.  
+- تمامی مسیرها، ثابت‌ها و configurationها از طریق `core/config.py` خوانده شود.
 
-📌 نکات توسعه
+---
 
-برای اضافه کردن فرم جدید، یک فایل جدید در ui_form/ بسازید و import آن را در main.py یا ui_form/__init__.py انجام دهید.
+## 📂 منابع
 
-برای مهاجرت دیتابیس به MySQL، کافیست DB_ENGINE را تغییر دهید و مطمئن شوید MySQL server در دسترس است.
+- `resources/` شامل آیکن‌ها، تصاویر و استایل‌ها (QSS) است.
 
-تمامی مسیرها، ثابت‌ها و configurationها از طریق core/config.py خوانده شود.
+</div>
+
