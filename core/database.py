@@ -6,5 +6,3 @@ DB_PATH = BASE_DIR / "db.sqlite3"
 
 def get_connection():
     return sqlite3.connect(DB_PATH)
-
-get_connection()
