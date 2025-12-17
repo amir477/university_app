@@ -1,6 +1,7 @@
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
+print ("--->", BASE_DIR)
 
 APP_NAME = "University Management System"
 DEBUG = True

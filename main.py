@@ -1,11 +1,19 @@
 import sys
 from pathlib import Path
-from core.config import get_app_name
-
 sys.path.append(str(Path(__file__).resolve().parent))
 
+from ui_form.login import Ui_Form
+from PyQt5 import QtWidgets
+
+
+
 def main():
-    print(f"Starting {get_app_name()}")
+    app = QtWidgets.QApplication(sys.argv)
+    Form = QtWidgets.QWidget()
+    login = Ui_Form()
+    login.setupUi(Form)
+    Form.show()
+    sys.exit(app.exec_())
 
 if __name__ == "__main__":
     main()

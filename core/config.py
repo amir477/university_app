@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 from core import constants
 from settings import APP_NAME, DEBUG, DB_ENGINE, DATABASES
 
