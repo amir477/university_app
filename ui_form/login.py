@@ -77,6 +77,7 @@ class LoginForm(object):
         self.admin_ui = AdminForm()
         self.admin_ui.setupUi(self.admin_window)
         self.admin_window.show()
+        
     def show_student_ui(self):
         self.Form.close()
         print ("student")
