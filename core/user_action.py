@@ -54,17 +54,46 @@ def delete_user(username):
     conn.commit()
     conn.close()
 
-def exist_user(username):
+def exists_user(username):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+
+    cursor.execute("""
+        SELECT COUNT(*) FROM users
+        WHERE username = ?
+    """, (username,))
+
+
+    count = cursor.fetchone()[0]
+    conn.close()
+
+    return count > 0
+
+def is_block(username):
     conn = get_connection()
     cursor = conn.cursor()
 
     cursor.execute("""
-        SELECT id
-        FROM users
+        SELECT is_active FROM users
         WHERE username = ?
     """, (username,))
 
-    user_id = cursor.fetchone()
+    is_active = cursor.fetchone()[0]
     conn.close()
 
-    return user_id
+    return not is_active
+
+def is_unblock(username):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT is_active FROM users
+        WHERE username = ?
+    """, (username,))
+
+    is_active = cursor.fetchone()[0]
+    conn.close()
+
+    return is_active

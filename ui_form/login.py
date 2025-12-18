@@ -2,6 +2,8 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from core.auth import authenticate
+from core.messages import MessageBox
+from ui_form.admin import AdminForm
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -52,18 +54,36 @@ class LoginForm(object):
         password = self.lineEdit_2.text()
         user = authenticate(username, password)
         if not user:
-            print ("wrong username or password")
+            MessageBox.error(self.Form, "wrong username or password")
             return
-        print (user)
         user_id, role, is_active = user
-        if role == "admin":
-            print ("admin")
-        elif role == "professor":
-            print ("teacher")
-        elif role == "student":
-            print ("student")   
-        self.Form.close()
+        if role == "admin" and is_active == 1:
+            MessageBox.success(self.Form, "login successfully", on_ok=self.show_admin_ui)
+        elif role == "student" and is_active == 1:
+            MessageBox.success(self.Form, "login successfully", on_ok=self.show_student_ui)
+        elif role == "professor" and is_active == 1:
+            MessageBox.success(self.Form, "login successfully", on_ok=self.show_professor_ui)
+        elif role == "student" and is_active == 0:
+            MessageBox.warning(self.Form, "user is blocked . contact admin")
+        elif role == "professor" and is_active == 0:
+            MessageBox.warning(self.Form, "user is blocked . contact admin")
+        else:
+            MessageBox.warning(self.Form, "user is blocked . contact admin")
 
+    
+    def show_admin_ui(self):
+        self.Form.close()
+        self.admin_window = QtWidgets.QWidget()
+        self.admin_ui = AdminForm()
+        self.admin_ui.setupUi(self.admin_window)
+        self.admin_window.show()
+    def show_student_ui(self):
+        self.Form.close()
+        print ("student")
+    
+    def show_professor_ui(self):
+        self.Form.close()
+        print ("professor")
 
 if __name__ == "__main__":
     import sys
