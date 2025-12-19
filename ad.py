@@ -132,18 +132,32 @@ class AdminForm(object):
         self.deleteuser_username.setText(_translate("Form", "username"))
         self.deleteuserButton.setText(_translate("Form", "delete"))
         #=========================================================
-
+        self.groupBox_2.setDisabled(True)
+        self.groupBox_3.setDisabled(True)
+        self.groupBox_4.setDisabled(True)
+        self.createuser_radio.clicked.connect(self.active_create_user_box)
+        self.blockunblock_radio.clicked.connect(self.active_block_user_box)
+        self.deleteuser_radio.clicked.connect(self.active_delete_user_box)
+        self.createuserButton.clicked.connect(self.create_user)
+        self.commituserButton.clicked.connect(self.block_or_unblock_user)
+        self.deleteuserButton.clicked.connect(self.delete_user)
 
 
 
     def active_create_user_box(self):
-        pass
+        self.groupBox_2.setDisabled(False)
+        self.groupBox_3.setDisabled(True)
+        self.groupBox_4.setDisabled(True)
 
     def active_block_user_box(self):
-        pass
+        self.groupBox_2.setDisabled(True)
+        self.groupBox_3.setDisabled(False)
+        self.groupBox_4.setDisabled(True)
 
     def active_delete_user_box(self):
-        pass
+        self.groupBox_2.setDisabled(True)
+        self.groupBox_3.setDisabled(True)
+        self.groupBox_4.setDisabled(False)
     
     def block_or_unblock_user(self):
         username = self.inputusername_blockuser.text()
