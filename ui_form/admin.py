@@ -106,6 +106,9 @@ class AdminForm(object):
         self.deleteuserButton.setGeometry(QtCore.QRect(452, 20, 111, 41))
         self.deleteuserButton.setObjectName("deleteuserButton")
         self.horizontalLayout_3.addWidget(self.groupBox_4)
+        #==========================
+
+        #==========================
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -131,7 +134,6 @@ class AdminForm(object):
         self.groupBox_4.setTitle(_translate("Form", "delete user"))
         self.deleteuser_username.setText(_translate("Form", "username"))
         self.deleteuserButton.setText(_translate("Form", "delete"))
-        #=========================================================
 
 
 

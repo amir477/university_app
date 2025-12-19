@@ -106,6 +106,16 @@ class AdminForm(object):
         self.deleteuserButton.setGeometry(QtCore.QRect(452, 20, 111, 41))
         self.deleteuserButton.setObjectName("deleteuserButton")
         self.horizontalLayout_3.addWidget(self.groupBox_4)
+        #=========================================================
+        self.groupBox_2.setDisabled(True)
+        self.groupBox_3.setDisabled(True)
+        self.groupBox_4.setDisabled(True)
+        self.createuser_radio.clicked.connect(self.active_create_user_box)
+        self.blockunblock_radio.clicked.connect(self.active_block_user_box)
+        self.deleteuser_radio.clicked.connect(self.active_delete_user_box)
+        self.createuserButton.clicked.connect(self.create_user)
+        self.commituserButton.clicked.connect(self.block_or_unblock_user)
+        self.deleteuserButton.clicked.connect(self.delete_user)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -131,16 +141,7 @@ class AdminForm(object):
         self.groupBox_4.setTitle(_translate("Form", "delete user"))
         self.deleteuser_username.setText(_translate("Form", "username"))
         self.deleteuserButton.setText(_translate("Form", "delete"))
-        #=========================================================
-        self.groupBox_2.setDisabled(True)
-        self.groupBox_3.setDisabled(True)
-        self.groupBox_4.setDisabled(True)
-        self.createuser_radio.clicked.connect(self.active_create_user_box)
-        self.blockunblock_radio.clicked.connect(self.active_block_user_box)
-        self.deleteuser_radio.clicked.connect(self.active_delete_user_box)
-        self.createuserButton.clicked.connect(self.create_user)
-        self.commituserButton.clicked.connect(self.block_or_unblock_user)
-        self.deleteuserButton.clicked.connect(self.delete_user)
+        
 
 
 
